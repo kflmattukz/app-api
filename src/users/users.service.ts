@@ -19,7 +19,15 @@ export class UsersService {
   ) {}
 
   async getUsers() {
-    return await this.drizzle.query.users.findMany();
+    return await this.drizzle.query.users.findMany({
+      columns: {
+        id: true,
+        username: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
+      }
+    })
   }
 
   async getUser(searchValue: string | number) {
