@@ -2,9 +2,9 @@ import {
   Body,
   Controller,
   Get,
+  Patch,
   Param,
   ParseIntPipe,
-  Patch,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserReq } from './dto/update-user.dto';
@@ -17,7 +17,7 @@ export class UsersController {
   async getUsers() {
     return await this.usersService.getUsers();
   }
-
+  
   @Patch(':id')
   async updateUser(
     @Param('id', ParseIntPipe) id: number,
