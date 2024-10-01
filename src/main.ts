@@ -9,7 +9,7 @@ import { Reflector } from '@nestjs/core';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(morgan('dev'));
-  app.useGlobalGuards(new JwtGuard(new JwtService, new Reflector))
+  app.useGlobalGuards(new JwtGuard(new JwtService(), new Reflector()));
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

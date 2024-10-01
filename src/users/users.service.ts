@@ -6,7 +6,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { DRIZZLE_DATABASE } from 'src/drizzle/drizzle.const';
+import { DRIZZLE_DATABASE } from '../drizzle/drizzle.const';
 import * as schema from './schema';
 import { eq, or, sql } from 'drizzle-orm';
 import { CreateUserRes } from './dto/create-user.dto';
@@ -27,8 +27,8 @@ export class UsersService {
         email: true,
         createdAt: true,
         updatedAt: true,
-      }
-    })
+      },
+    });
   }
 
   async getUser(searchValue: string | number) {

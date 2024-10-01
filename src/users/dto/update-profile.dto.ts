@@ -1,8 +1,8 @@
-import { IsOptional } from "class-validator";
-import { CreateProfileReq, CreateProfileRes } from "./create-profile.dto";
-import { Transform } from "class-transformer";
+import { IsOptional } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { CreateProfileReq, CreateProfileRes } from './create-profile.dto';
 
-export class UpdateProfileReq extends CreateProfileReq{
+export class UpdateProfileReq extends CreateProfileReq {
   @IsOptional()
   firstName: string;
 
@@ -10,7 +10,7 @@ export class UpdateProfileReq extends CreateProfileReq{
   lastName: string;
 
   @IsOptional()
-  @Transform(({value}) => parseInt(value))
+  @Transform(({ value }) => parseInt(value))
   age: number;
 
   @IsOptional()
@@ -18,3 +18,4 @@ export class UpdateProfileReq extends CreateProfileReq{
 }
 
 export class UpdateProfileRes extends CreateProfileRes {}
+

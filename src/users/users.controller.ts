@@ -17,7 +17,7 @@ export class UsersController {
   async getUsers() {
     return await this.usersService.getUsers();
   }
-  
+
   @Patch(':id')
   async updateUser(
     @Param('id', ParseIntPipe) id: number,

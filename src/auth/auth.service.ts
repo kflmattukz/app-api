@@ -20,27 +20,26 @@ export class AuthService {
   }
 
   async signIn(signIn: SignInReq) {
-    const user = await this.userService.getUser(signIn.username)
+    const user = await this.userService.getUser(signIn.username);
     if (!user) {
       throw new UnauthorizedException();
     }
     const isMatch = await bcrypt.compare(signIn.password, user.password);
     if (!isMatch) {
-      throw new UnauthorizedException('Username and password not match.')
+      throw new UnauthorizedException('Username and password not match.');
     }
-    const payload = { 
+    const payload = {
       sub: user.id,
       username: user.username,
       email: user.email,
-     }
+    };
 
-    return  {
+    return {
       responseCode: 200,
-      message: "SUCCESS",
+      message: 'SUCCESS',
       data: {
-        access_token : await this.jwtService.signAsync(payload)
-      }
-    }
+        access_token: await this.jwtService.signAsync(payload),
+      },
+    };
   }
 }
-

@@ -1,4 +1,12 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Length, Max, Min } from "class-validator";
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Length,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateProfileReq {
   @IsString()
@@ -29,3 +37,4 @@ export class CreateProfileRes {
   age: number;
   about: string | undefined | null;
 }
+

@@ -1,8 +1,9 @@
 import * as dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 export const jwtConstant = {
   secret: process.env.JWT_TOKEN_SECRET,
-  expired: process.env.JWT_TOKEN_EXPIRE
-}
+  expired: process.env.JWT_TOKEN_EXPIRE,
+};
+

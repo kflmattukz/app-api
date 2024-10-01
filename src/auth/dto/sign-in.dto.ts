@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class SignInReq {
   @IsString()
@@ -14,3 +14,4 @@ export class SignInReq {
   @IsNotEmpty()
   password: string;
 }
+
