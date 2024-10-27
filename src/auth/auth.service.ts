@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
-import { SignUpReq, SignUpRes } from './dto/sign-up.dto';
 import * as bcrypt from 'bcrypt';
+import { SignUpReq, SignUpRes } from './dto/sign-up.dto';
 import { SignInReq } from './dto/sign-in.dto';
 import { JwtService } from '@nestjs/jwt';
 
@@ -10,7 +10,7 @@ export class AuthService {
   constructor(
     private readonly userService: UsersService,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async signUp(signUp: SignUpReq): Promise<SignUpRes[]> {
     const saltRound = await bcrypt.genSalt();

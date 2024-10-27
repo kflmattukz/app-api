@@ -14,10 +14,10 @@ import { jwtConstant } from '../constant/jwt.constant';
       secret: jwtConstant.secret,
       signOptions: { expiresIn: jwtConstant.expired },
     }),
-    DrizzleModule,
     UsersModule,
+    DrizzleModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, UsersService],
 })
-export class AuthModule {}
+export class AuthModule { }

@@ -30,4 +30,3 @@ export class ProfilesController {
     return await this.profilesService.updateProfile(user.sub, profile);
   }
 }
-

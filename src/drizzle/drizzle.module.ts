@@ -4,6 +4,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 import { DRIZZLE_DATABASE } from './drizzle.const';
 import * as usersSchema from '../users/schema';
+import * as postsSchema from '../posts/schema';
 
 @Module({
   providers: [
@@ -16,6 +17,7 @@ import * as usersSchema from '../users/schema';
         return drizzle(pool, {
           schema: {
             ...usersSchema,
+            ...postsSchema,
           },
         });
       },

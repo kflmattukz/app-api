@@ -11,6 +11,7 @@ import * as schema from './schema';
 import { eq, or, sql } from 'drizzle-orm';
 import { CreateUserRes } from './dto/create-user.dto';
 import { UpdateUserRes } from './dto/update-user.dto';
+import { updateRoleQuery } from 'src/query/user.query';
 
 @Injectable()
 export class UsersService {
@@ -29,6 +30,29 @@ export class UsersService {
         updatedAt: true,
       },
     });
+  }
+
+  async getUserInfo(userId: number) {
+    return await this.drizzle.query.users.findFirst({
+      where: eq(schema.users.id, userId),
+      with: {
+        posts: true,
+        user_profile: true,
+        user_role: true,
+      },
+    });
+  }
+
+  async addRoleToUser(userId: number, roleId: number) {
+    const query = updateRoleQuery(roleId, userId);
+    const updateRole = await this.drizzle.execute(query);
+    if (updateRole.rowCount > 0) {
+      return {
+        status: 'SUCCESS',
+        statusCode: HttpStatus.OK,
+        message: 'Role users updated.',
+      };
+    }
   }
 
   async getUser(searchValue: string | number) {

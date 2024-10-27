@@ -111,10 +111,9 @@ export class ProfilesService {
 
   private async isProfileExist(userId: number): Promise<boolean> {
     const { rows } = await this.drizzle.execute(sql`
-    SELECT EXISTS (SELECT 1 FROM ${schema.profiles} where ${schema.profiles.userId} = ${userId}) as is_exist  
+    SELECT EXISTS (SELECT 1 FROM ${schema.profiles} where ${schema.profiles.userId} = ${userId}) as is_exist
     `);
 
     return rows[0].is_exist as boolean;
   }
 }
-
