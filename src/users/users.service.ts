@@ -11,14 +11,14 @@ import * as schema from './schema';
 import { eq, or, sql } from 'drizzle-orm';
 import { CreateUserRes } from './dto/create-user.dto';
 import { UpdateUserRes } from './dto/update-user.dto';
-import { updateRoleQuery } from 'src/query/user.query';
+import { updateRoleQuery } from 'src/query/users.query';
 
 @Injectable()
 export class UsersService {
   constructor(
     @Inject(DRIZZLE_DATABASE)
     private readonly drizzle: NodePgDatabase<typeof schema>,
-  ) {}
+  ) { }
 
   async getUsers() {
     return await this.drizzle.query.users.findMany({
